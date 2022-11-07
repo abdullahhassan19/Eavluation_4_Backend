@@ -4,10 +4,12 @@ const cors=require("cors")
 const PORT = process.env.PORT || 8080;
 const {connection}=require("./Config/db");
 const { AuthRouter } = require("./Routers/AuthRouter");
+const { TodoRouter } = require("./Routers/TodoRouter");
 const app = express();
 app.use(express.json());
 app.use(cors())
 app.use("/",AuthRouter)
+app.use("/", TodoRouter);
 
 app.get("/",(req,res)=>{
     req.send("Home Page")
