@@ -52,7 +52,7 @@ TodoRouter.put("/:userId/update/:_id", Authentication, async (req, res) => {
     status: status,
     tag: tag,
   });
-  res.send({ msg: "Product Updated" });
+  res.send({ msg: "Todo Updated" });
 });
 TodoRouter.delete("/:userId/delete/:_id", Authentication,async(req,res)=>{
     const _id=req.params._id
