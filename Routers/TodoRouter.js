@@ -32,18 +32,28 @@ TodoRouter.get("/:userId",Authentication, async (req, res) => {
 });
 
 
-TodoRouter.post("/:userId/update/:_id",Authentication, async (req, res) => {
-  const userId = req.params.userId;
-  const _id = req.params._id;
-  const {taskname,status,tag}=req.body
-  const todo = await TodosModel.findByIdAndUpdate(_id,{
-    taskname:taskname,
-    status:status,
-    tag:tag
-  });
-  res.send({ msg: "Todo Updated" });
-});
+// TodoRouter.post("/:userId/update/:_id",Authentication, async (req, res) => {
+//   const userId = req.params.userId;
+//   const _id = req.params._id;
+//   const {taskname,status,tag}=req.body
+//   const todo = await TodosModel.findByIdAndUpdate(_id,{
+//     taskname,
+//     status,
+//     tag
+//   });
+//   res.send({ msg: "Todo Updated" });
+// });
 
+TodoRouter.put("/:userId/update/:_id", Authentication, async (req, res) => {
+  const _id = req.params._id;
+  const { taskname, status, tag } = req.body;
+  const todo = await TodosModel.findByIdAndUpdate(_id, {
+    taskname: taskname,
+    status: status,
+    tag: tag,
+  });
+  res.send({ msg: "Product Updated" });
+});
 TodoRouter.delete("/:userId/delete/:_id", Authentication,async(req,res)=>{
     const _id=req.params._id
     const todo=await TodosModel.findByIdAndRemove(_id)
